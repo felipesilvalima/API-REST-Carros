@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
 Route::prefix('V1')->middleware('jwt.auth')->group(function(){
     Route::post('me',[AuthController::class, 'me'])->name('me.auth');
     Route::post('refresh',[AuthController::class, 'refresh'])->name('refresh.auth');
